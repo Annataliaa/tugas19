@@ -74,7 +74,10 @@
                 <td>" . $row['password'] . "</td>
                 <td>" . $row['created_at'] . "</td>
                 <td>" . $row['updated_at'] . "</td>
-            </tr>";
+            </tr>
+            <center>
+            <button><a href='listUser.php'>Kembali</a></button>
+            </center>";
     }
     else {
         echo "error";

@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']){
+	?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +42,7 @@ $row = mysqli_fetch_array($result);
                 <td>" . $row['role'] . "</td>
                 <td>";
                 if($row['avatar'] == null){
-                    echo "<img src='image/icon.png' alt='' width='100px'>";
+                    echo "<img src='image/profile_default.png' alt='' width='100px'>";
                 } else {
                     echo "<img src='image/".$row['avatar'] . "' width='100px'>";
                 }
@@ -48,8 +52,17 @@ $row = mysqli_fetch_array($result);
                 <td>" . $row['password'] . "</td>
                 <td>" . $row['created_at'] . "</td>
                 <td>" . $row['updated_at'] . "</td>
-            </tr>";
+            </tr>
+            <center>
+            <button><a href='listUser.php'>Kembali</a></button>
+            </center>";
 ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<?php
+} else {
+    header("location:loginRequired.php");
+}
+?>
